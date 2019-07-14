@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.niken.tkalfiizzah">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name="com.niken.tkalfiizzah.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.login.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.home.HomeActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.detailjadwal.DetailJadwalActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/jadwal"
+            android:parentActivityName="com.niken.tkalfiizzah.activity.home.HomeActivity" />
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.detailkelas.DetailKelasActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/kelas"
+            android:parentActivityName="com.niken.tkalfiizzah.activity.home.HomeActivity" />
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.detailsiswa.DetailSiswaActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/siswa"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.niken.tkalfiizzah.activity.home.HomeActivity" />
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.detailuser.DetaiUseriActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/user"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.niken.tkalfiizzah.activity.home.HomeActivity" />
+
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.detailjadwalpending.DetailJadwalPendingActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/penilaian"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.niken.tkalfiizzah.activity.home.HomeActivity" />
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.hasiljadwal.HasilJadwalActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/penilaian"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.niken.tkalfiizzah.activity.home.HomeActivity" />
+
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.hasiljadwalsiswa.HasilJadwalSiswaActivity"
+            android:theme="@style/AppTheme.DialogActivityTheme"
+            android:label="@string/penilaian"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.niken.tkalfiizzah.activity.hasiljadwal.HasilJadwalActivity" />
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.berinilai.BeriNilaiActivity"
+            android:theme="@style/AppTheme.DialogActivityTheme"
+            android:label="@string/penilaian"
+            android:launchMode="singleTop"
+            android:excludeFromRecents="true"
+            android:parentActivityName="com.niken.tkalfiizzah.activity.detailjadwalpending.DetailJadwalPendingActivity" />
+        <activity
+            android:name="com.niken.tkalfiizzah.activity.chooseractivity.ChooserActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleTop" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.niken.tkalfiizzah.Utils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.niken.tkalfiizzah.activity.detailjadwal.DetailJadwalViewModel" />
+    </data>
+
+    <com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/title_data"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Buat Jadwal Kegiatan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/label_nama_kegiatan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:elevation="2dp"
+                    android:hint="Nama Kegiatan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title_data">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nama_kegiatanET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="@={vm.jadwal.c_NAMA}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/label_tanggal_kegiatan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:elevation="2dp"
+                    android:hint="Tanggal Kegiatan"
+                    app:layout_constraintEnd_toEndOf="@+id/label_nama_kegiatan"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/label_nama_kegiatan"
+                    app:layout_constraintTop_toBottomOf="@+id/label_nama_kegiatan">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tanggal_et"
+                        endDrawableClick="@{(v)->vm.setTanggal(tanggalEt)}"
+                        keyListener="@{null}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_today_black_28"
+                        android:text="@{vm.jadwal.d_TANGGAL == null ? `Belum Diatur` : Utils.formatDate(vm.jadwal.d_TANGGAL, `dd MMMM yyyy`)}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/label_mulai_kegiatan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:elevation="2dp"
+                    android:hint="Mulai Kegiatan"
+                    app:layout_constraintEnd_toEndOf="@+id/label_tanggal_kegiatan"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/label_tanggal_kegiatan"
+                    app:layout_constraintTop_toBottomOf="@+id/label_tanggal_kegiatan">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/mulai_et"
+                        endDrawableClick="@{(v)->vm.setMulai(tanggalEt)}"
+                        keyListener="@{null}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_schedule_28"
+                        android:gravity="center_vertical"
+                        android:text="@{vm.jadwal.d_MULAI == null ? `Belum Diatur` : Utils.formatDate(vm.jadwal.d_MULAI, `HH:mm`)}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/label_selesai_kegiatan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:elevation="2dp"
+                    android:hint="Selesai Kegiatan"
+                    app:layout_constraintEnd_toEndOf="@+id/label_mulai_kegiatan"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/label_mulai_kegiatan"
+                    app:layout_constraintTop_toBottomOf="@+id/label_mulai_kegiatan">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/selesai_et"
+                        endDrawableClick="@{(v)->vm.setSelesai(tanggalEt)}"
+                        keyListener="@{null}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_schedule_28"
+                        android:gravity="center_vertical"
+                        android:text="@{vm.jadwal.d_SELESAI == null ? `Belum Diatur` : Utils.formatDate(vm.jadwal.d_SELESAI, `HH:mm`)}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/guru"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/spinner1"
+                    app:layout_constraintStart_toStartOf="@+id/label_selesai_kegiatan"
+                    app:layout_constraintTop_toTopOf="@+id/spinner1" />
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    style="@android:style/Widget.Material.Spinner.Underlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:adapter="@{vm.getGuruAdapter()}"
+                    android:onItemSelected="@{vm::onGuruSelected}"
+                    android:selectedItemPosition="@{vm.selectedGuru}"
+                    app:layout_constraintEnd_toEndOf="@+id/label_selesai_kegiatan"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView1"
+                    app:layout_constraintTop_toBottomOf="@+id/label_selesai_kegiatan" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kelas"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/spinner2"
+                    app:layout_constraintStart_toStartOf="@+id/textView1"
+                    app:layout_constraintTop_toTopOf="@+id/spinner2" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    style="@android:style/Widget.Material.Spinner.Underlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:adapter="@{vm.getKelasAdapter()}"
+                    android:onItemSelected="@{vm::onKelasSelected}"
+                    android:selectedItemPosition="@{vm.selectedKelas}"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner1"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner1" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:onClick="@{(v)->vm.simpanJadwal()}"
+                    android:text="@string/save"
+                    android:visibility="@{vm.jadwal.c_JADWAL == null ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner2"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="@{(v)->vm.selesaikanJadwal()}"
+                    android:text="@string/selesaikan"
+                    android:enabled="@{vm.jadwal.c_STATUS == -1}"
+                    android:visibility="@{vm.jadwal.c_JADWAL != null ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner2"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:onClick="@{(v)->vm.batalkanJadwal()}"
+                    android:text="@string/batalkan"
+                    android:enabled="@{vm.jadwal.c_STATUS == -1}"
+                    android:visibility="@{vm.jadwal.c_JADWAL != null ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="@id/textView2"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner2"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>
+</layout>

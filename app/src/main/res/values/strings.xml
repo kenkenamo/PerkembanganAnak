@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">TK Alfi Izzah</string>
+    <string name="title_login">Login</string>
+    <string name="jadwal">Jadwal</string>
+    <string name="kelas">Kelas</string>
+    <string name="siswa">Siswa</string>
+    <string name="user">Wali</string>
+    <string name="hubungan">Hubungan</string>
+    <string name="save">Save</string>
+    <string name="status_user">Status User</string>
+    <string name="wali_murid">Wali Murid</string>
+    <string name="guru">Guru</string>
+    <string name="group_user">Group User</string>
+    <string name="alamat">Alamat</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="username">Username</string>
+    <string name="data_siswa">Data Siswa</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="perempuan">Perempuan</string>
+    <string name="laki_laki">Laki - Laki</string>
+    <string name="handphone_1">Handphone 1</string>
+    <string name="handphone_2">Handphone 2</string>
+    <string name="telp_rumah">Telp Rumah</string>
+    <string name="email">Email</string>
+    <string name="tanggal_masuk">Tanggal Masuk</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="tempat_lahir">Tempat Lahir</string>
+    <string name="nama_siswa">Nama Siswa</string>
+    <string name="selesaikan">Selesaikan</string>
+    <string name="batalkan">Batalkan</string>
+    <string name="profile">Profile</string>
+    <string name="ubah_password">Ubah Password</string>
+    <string name="keluar">Keluar</string>
+    <string name="tambah_nilai">Tambah Nilai</string>
+    <string name="master_data">Master Data</string>
+    <string name="akun">Akun</string>
+    <string name="laporan">Laporan</string>
+    <string name="formatted_nis"><font color="00ACC1">Nomor Induk Siswa :</font> %s</string>
+    <string name="formatted_tanggal"><font color="00ACC1">Tanggal :</font> %s</string>
+    <string name="formatted_tanggal_masuk"><font color="00ACC1">Tanggal Masuk :</font> %s</string>
+    <string name="formatted_tanggal_lahir"><font color="00ACC1">Tanggal Lahir :</font> %s</string>
+    <string name="formatted_mulai"><font color="00ACC1">Mulai :</font> %s</string>
+    <string name="formatted_selesai"><font color="00ACC1">Selesai :</font> %s</string>
+    <string name="formatted_guru"><font color="00ACC1">Guru :</font> %s</string>
+    <string name="formatted_kelas"><font color="00ACC1">Kelas :</font> %s</string>
+    <string name="formatted_nilai">Nilai : %s</string>
+    <string name="formatted_status">Status : %s</string>
+    <string name="status_unchanged">Jadwal belum diinput.</string>
+    <string name="status_selesai">Jadwal ini telah diselesaikan.</string>
+    <string name="status_batal">Jadwal ini dibatalkan.</string>
+
+
+    <string name="beri_penilaian">Beri Penilaian</string>
+    <string name="ubah_penilaian">Ubah Penilaian</string>
+    <string name="penilaian">Penilaian</string>
+    <string name="orang_tua_wali">Orang Tua / Wali</string>
+    <string name="pilih_orang_tua_wali">Pilih Orang Tua / Wali</string>
+    <string name="data_wali">Data Wali</string>
+    <string name="cancel">Cancel</string>
+    <string name="password_lama">Password Lama</string>
+    <string name="password_baru">Password Baru</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="ya">ya</string>
+    <string name="tambah_foto">Tambah Foto</string>
+    <string name="ubah_foto">Ubah Foto</string>
+    <string name="konfirmasi">Konfirmasi</string>
+    <string name="refresh">Refresh</string>
+    <string name="cari">Cari</string>
+    <string name="ayah">Ayah</string>
+    <string name="ibu">Ibu</string>
+    <string name="wali">Wali</string>
+    <string name="pilih_murid">Pilih Murid</string>
+    <string name="password">Password</string>
+
+
+</resources>

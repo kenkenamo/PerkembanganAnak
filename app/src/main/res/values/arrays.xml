@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="MasterDataEntries">
+        <item>Master Data Siswa</item>
+        <item>Master Data User</item>
+        <item>Master Data Kelas</item>
+    </string-array>
+    <string-array name="GuruEntries">
+        <item>Guru A</item>
+        <item>Guru B</item>
+    </string-array>
+
+    <string-array name="HubunganSiswa">
+        <item>@string/ayah</item>
+        <item>@string/ibu</item>
+        <item>@string/wali</item>
+    </string-array>
+</resources>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.niken.tkalfiizzah.activity.detailsiswa.DetailSiswaViewModel" />
+
+    </data>
+
+    <com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/title_data"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Data Siswa"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/label_nama_user"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:elevation="2dp"
+                    android:hint="@string/nama_siswa"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title_data">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nama_userET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="@={vm.siswa.v_NAMA}"
+                        android:nextFocusUp="@id/nama_userET"
+                        android:nextFocusLeft="@id/nama_userET" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/label_tempat_lahir"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:elevation="2dp"
+                    android:hint="@string/tempat_lahir"
+                    app:layout_constraintEnd_toEndOf="@+id/label_nama_user"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/label_nama_user"
+                    app:layout_constraintTop_toBottomOf="@+id/label_nama_user">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tempat_lahir_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="@={vm.siswa.c_TEMPAT_LAHIR}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/label_tanggal_lahir"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:elevation="2dp"
+                    android:hint="@string/tanggal_lahir"
+                    app:layout_constraintEnd_toEndOf="@+id/label_tempat_lahir"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/label_tempat_lahir"
+                    app:layout_constraintTop_toBottomOf="@+id/label_tempat_lahir">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tanggal_lahir_et"
+                        endDrawableClick="@{(v)->vm.setTanggalLahir(tanggalLahirEt)}"
+                        keyListener="@{null}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_today_black_28"
+                        android:text="@={vm.siswa.d_TGL_LAHIR}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RadioGroup
+                    android:id="@+id/label_jenkel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_radiogroup"
+                    android:onCheckedChanged="@{vm::onJenisKelaminChange}"
+                    android:checkedButton="@{vm.siswa.c_JENKEL.equals(`L`) ? @id/jenkel_l : @id/jenkel_p}"
+                    app:layout_constraintEnd_toEndOf="@+id/label_tanggal_lahir"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/label_tanggal_lahir"
+                    app:layout_constraintTop_toBottomOf="@+id/label_tanggal_lahir">
+
+                    <TextView
+                        android:id="@+id/header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        android:text="@string/jenis_kelamin"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:textSize="12sp"
+                        android:textAppearance="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox" />
+
+                    <RadioButton
+                        android:id="@+id/jenkel_p"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/perempuan" />
+
+                    <RadioButton
+                        android:id="@+id/jenkel_l"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/laki_laki" />
+
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/label_tanggal_masuk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:elevation="2dp"
+                    android:hint="@string/tanggal_masuk"
+                    app:layout_constraintEnd_toEndOf="@+id/label_jenkel"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/label_jenkel"
+                    app:layout_constraintTop_toBottomOf="@+id/label_jenkel">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tanggal_masuk_et"
+                        endDrawableClick="@{(v)->vm.setTanggalMasuk(tanggalMasukEt)}"
+                        keyListener="@{null}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_today_black_28"
+                        android:text="@{vm.siswa.d_TGL_MASUK}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kelas"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/spinner2"
+                    app:layout_constraintStart_toStartOf="@+id/label_tanggal_masuk"
+                    app:layout_constraintTop_toTopOf="@+id/spinner2" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    style="@android:style/Widget.Material.Spinner.Underlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:adapter="@{vm.getKelasAdapter()}"
+                    setOnTouchListener="@{vm::onSpinnerClick}"
+                    android:onItemSelected="@{vm::onKelasSelected}"
+                    android:selectedItemPosition="@{vm.selectedPos}"
+                    app:layout_constraintEnd_toEndOf="@+id/label_tanggal_masuk"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/label_tanggal_masuk" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="spinner2"
+                    tools:layout_editor_absoluteY="500dp" />
+
+                <View
+                    android:id="@+id/div"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/nav_item_active"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/barrier" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/orang_tua_wali"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner2"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/div" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listData"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="@id/spinner2"
+                    app:layout_constraintStart_toStartOf="@id/textView2"
+                    app:layout_constraintTop_toBottomOf="@id/textView5"
+                    tools:listitem="@layout/list_wali" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:drawableStart="@drawable/ic_add_24"
+                    android:text="@string/pilih_orang_tua_wali"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:layout_constraintEnd_toEndOf="@id/spinner2"
+                    app:layout_constraintStart_toStartOf="@id/textView2"
+                    app:layout_constraintTop_toBottomOf="@id/listData" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>
+</layout>
